@@ -254,63 +254,6 @@ download() {
 	fi
 }
 
-## Install ngrok
-install_ngrok() {
-	if [[ -e ".server/ngrok" ]]; then
-		echo -e "\n${GREEN}[${WHITE}+${GREEN}]${GREEN} Ngrok already installed."
-	else
-		echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing ngrok..."${WHITE}
-		arch=`uname -m`
-		if [[ ("$arch" == *'arm'*) || ("$arch" == *'Android'*) ]]; then
-			download 'https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-arm.tgz' 'ngrok'
-		elif [[ "$arch" == *'aarch64'* ]]; then
-			download 'https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-arm64.tgz' 'ngrok'
-		elif [[ "$arch" == *'x86_64'* ]]; then
-			download 'https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz' 'ngrok'
-		else
-			download 'https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-386.tgz' 'ngrok'
-		fi
-	fi
-}
-
-## Install Cloudflared
-install_cloudflared() {
-	if [[ -e ".server/cloudflared" ]]; then
-		echo -e "\n${GREEN}[${WHITE}+${GREEN}]${GREEN} Cloudflared already installed."
-	else
-		echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing Cloudflared..."${WHITE}
-		arch=`uname -m`
-		if [[ ("$arch" == *'arm'*) || ("$arch" == *'Android'*) ]]; then
-			download 'https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm' 'cloudflared'
-		elif [[ "$arch" == *'aarch64'* ]]; then
-			download 'https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64' 'cloudflared'
-		elif [[ "$arch" == *'x86_64'* ]]; then
-			download 'https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64' 'cloudflared'
-		else
-			download 'https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-386' 'cloudflared'
-		fi
-	fi
-}
-
-## Install LocalXpose
-install_localxpose() {
-	if [[ -e ".server/loclx" ]]; then
-		echo -e "\n${GREEN}[${WHITE}+${GREEN}]${GREEN} LocalXpose already installed."
-	else
-		echo -e "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Installing LocalXpose..."${WHITE}
-		arch=`uname -m`
-		if [[ ("$arch" == *'arm'*) || ("$arch" == *'Android'*) ]]; then
-			download 'https://api.localxpose.io/api/v2/downloads/loclx-linux-arm.zip' 'loclx'
-		elif [[ "$arch" == *'aarch64'* ]]; then
-			download 'https://api.localxpose.io/api/v2/downloads/loclx-linux-arm64.zip' 'loclx'
-		elif [[ "$arch" == *'x86_64'* ]]; then
-			download 'https://api.localxpose.io/api/v2/downloads/loclx-linux-amd64.zip' 'loclx'
-		else
-			download 'https://api.localxpose.io/api/v2/downloads/loclx-linux-386.zip' 'loclx'
-		fi
-	fi
-}
-
 ## Exit message
 msg_exit() {
 	{ clear; banner; echo; }
